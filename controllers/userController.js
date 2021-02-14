@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const { jwt } = require('../utils');
+const { jwt, formValidator } = require('../utils');
 const { cookie } = require('../config');
 
 module.exports = {
@@ -47,7 +47,16 @@ module.exports = {
         },
 
         register(req, res, next) {
-            const { email, fullName, password, repeatPassword } = req.body;
+
+            const formValidations = formValidator(req);
+
+            if (!formValidations.isOk) {
+                res.render('./user/register.hbs', formValidations.contextOptions);
+                return;
+            }
+
+            const { email, fullName, password } = { ...req.body };
+
             User.findOne({ email })
                 .then((user) => {
                     if (user) {
