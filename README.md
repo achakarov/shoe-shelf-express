@@ -1,1 +1,1 @@
-# shoe-shelf-express
+Run "npm i" before running "npm start"
