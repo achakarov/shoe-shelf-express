@@ -9,7 +9,7 @@ module.exports = (req) => {
                 oldInput: {
                     ...req.body
                 },
-                message: `${errors.array()[0].msg}`
+                message: `${errors.array().msg}`
             },
             isOk: false
         }
