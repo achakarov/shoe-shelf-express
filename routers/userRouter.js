@@ -1,5 +1,5 @@
 const { userController } = require('../controllers');
-const { registerMiddlewareValidator } = require('../utils');
+const { registerMiddlewareValidator, loginMiddlewareValidator } = require('../utils');
 
 module.exports = (router) => {
     router.get('/login', userController.get.login);
@@ -8,7 +8,7 @@ module.exports = (router) => {
     router.get('/logout', userController.get.logout);
 
     router.post('/register', registerMiddlewareValidator, userController.post.register);
-    router.post('/login', userController.post.login);
+    router.post('/login', loginMiddlewareValidator, userController.post.login);
 
     return router;
 }
