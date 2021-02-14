@@ -19,6 +19,7 @@ module.exports = {
                 .redirect('/home');
         }
     },
+
     post: {
         login(req, res, next) {
             const { email, password } = req.body;
@@ -63,6 +64,6 @@ module.exports = {
                     console.log(err);
                     res.redirect('/user/register');
                 });
-        },
+        }
     }
 }
